@@ -1,28 +1,7 @@
-import reactImg from './assets/react-core-concepts.png';
 import { CORE_CONCEPTS } from './data.js';
+import Header from './components/Header.jsx'
 
-const reactDescriptions = ['Fundamental', 'Crucial', 'Core'];
-
-function genRandomInt(max) {
-  return Math.floor(Math.random() * (max + 1));
-}
-
-function Header() {
-  const description = reactDescriptions[genRandomInt(2)];
-
-  return (
-    <header>
-      <img src={reactImg} alt="Stylized atom" />
-      <h1>React Essentials</h1>
-      <p>
-        {description} React concepts you will need for almost any app you are
-        going to build!
-      </p>
-    </header>
-  );
-}
-
-function CoreConcept({ image, title, description }) {
+function CoreConcept({ image, title, description }) { //object destructing otherwise can be used as props and below used as props.image and without () brackets
   return (
     <li>
       <img src={image} alt={title} />
@@ -41,11 +20,12 @@ function App() {
           <h2>Core Concepts</h2>
           <ul>
             <CoreConcept
-              title={CORE_CONCEPTS[0].title}
+              title={CORE_CONCEPTS[0].title} //without using spread operator
               description={CORE_CONCEPTS[0].description}
               image={CORE_CONCEPTS[0].image}
             />
-            <CoreConcept {...CORE_CONCEPTS[1]} />
+             {/* using spread operator */}
+            <CoreConcept {...CORE_CONCEPTS[1]} /> 
             <CoreConcept {...CORE_CONCEPTS[2]} />
             <CoreConcept {...CORE_CONCEPTS[3]} />
           </ul>
